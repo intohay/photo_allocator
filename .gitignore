@@ -1,1 +1,5 @@
 .venv
+venv
+
+.tool-versions
+.DS_Store
