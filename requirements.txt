@@ -2,5 +2,6 @@ numpy
 pandas
 PuLP
 reportlab
+python-dotenv
 
 black

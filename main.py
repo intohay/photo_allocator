@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import os
 import json
 import argparse
@@ -5,6 +6,8 @@ import argparse
 from create_input_from_csv import summarize_csv_file
 from trade_photos import trade_photos
 from visualizers.build_output_pdf import create_pdf
+
+load_dotenv()
 
 
 def main(csv_dir_path: str, m: int, debug_mode: bool):
@@ -39,7 +42,6 @@ def main(csv_dir_path: str, m: int, debug_mode: bool):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("m", type=int, help="参加人数")
     parser.add_argument(
         "--test-mode",
         type=bool,
@@ -61,6 +63,6 @@ if __name__ == "__main__":
 
     main(
         csv_dir_path=csv_dir_path,
-        m=args.m,
+        m=int(os.getenv("NUM_USERS")),
         debug_mode=args.debug_mode,
     )
