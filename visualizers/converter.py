@@ -31,14 +31,11 @@ def convert_outputs_to_display(output_data):
     # 変換結果を格納するリスト
     converted_data = [["曲名", "ヒキ", "チュウ", "ヨリ", "座り"]]
 
-    print(output_data)
     # 各曲の写真状態を変換
     for i, title in enumerate(song_titles, start=1):
         row = [title]
         for j in range(1, 5):
             key = f"{i:02}-{j}"
-            print("output", output_data)
-            print("key", key)
             status = output_data["photos"][key]
             row.append(convert_status(status))
         converted_data.append(row)
