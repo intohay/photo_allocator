@@ -64,9 +64,28 @@ python generate_dummy.py 12
 python photo_trading.py <your input json file>
 ```
 
+以下のコードで通しの処理が走る。
+```
+python main.py 15 --test-mode True --debug-mode True
+```
+
+引数について
+- 第一引数は、参加者の人数(必須)
+- --test-mode は、マークシートのアプリが出力したCSVファイルの参照先を変更するためのオプション
+    - True の場合は data_for_test/ のファイルを参照する
+    - False の場合は data/ のファイルを参照する。(本番ではこちらを使う)
+    - default は False
+- --debug-mode は、出力する PDFの内容を変更するためのオプション
+    - True の場合は output の情報に加え、input の情報や、その他のサマリーを出す(未実装)
+    - False の場合は output の情報のみ出力する。(本番ではこちらを使う)
+    - default は False
 
 
-
+## lint
+以下のコマンドで Python のコードを整形する。
+```
+black .
+```
 
 
 
