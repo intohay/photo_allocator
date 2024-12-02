@@ -3,3 +3,6 @@ venv
 
 .tool-versions
 .DS_Store
+
+*.pyc
+__pycache__/
