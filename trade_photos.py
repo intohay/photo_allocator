@@ -13,14 +13,14 @@ def display_state(A, B, n, m, label="状態"):
         index=[f"Person_{i}" for i in range(m)],
         columns=[f"Card_{j}" for j in range(n)],
     )
-    print(f"\n{label}のAテーブル（カード保持状況）：")
-    print(A_df.T)  # 転置してカードを行、人物を列にする
+    # print(f"\n{label}のAテーブル（カード保持状況）：")
+    # print(A_df.T)  # 転置してカードを行、人物を列にする
 
     # personごとのカード数
     person_card_counts = A_array.sum(axis=1)
-    print("\n各人のカード数：")
-    for i, count in enumerate(person_card_counts):
-        print(f"Person_{i}:　{count} 枚")
+    # print("\n各人のカード数：")
+    # for i, count in enumerate(person_card_counts):
+    #     print(f"Person_{i}:　{count} 枚")
 
     # 最大値と最小値、そしてその差
     print("\nカード数の最大値：", person_card_counts.max())
@@ -34,8 +34,8 @@ def display_state(A, B, n, m, label="状態"):
     B_df = pd.DataFrame(
         B, index=[f"Card_{j}" for j in range(n)], columns=["場のカード"]
     )
-    print(f"\n{label}のBテーブル（場のカード状況）：")
-    print(B_df)
+    # print(f"\n{label}のBテーブル（場のカード状況）：")
+    # print(B_df)
 
 
 def minimize_max_min_difference(p, fixed_ones, n, m):
@@ -123,7 +123,7 @@ def export_to_json(A, status, names, output_file):
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=4)
 
-    print(f"JSONファイルに出力しました: {output_file}")
+    # print(f"JSONファイルに出力しました: {output_file}")
 
 
 # 使用例
