@@ -12,6 +12,13 @@ def main():
     if not os.path.exists("data_for_test"):
         os.makedirs("data_for_test")
 
+    # データを生成する前にすべて消去しておく
+    # 理由: 前回生成した CSVが残ると、想定の参加者数より多くなってしまうため
+    for filename in os.listdir("data_for_test"):
+        file_path = os.path.join("data_for_test", filename)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
+
     # 1パック 5枚入り
     num_photos = 5 * int(os.getenv("NUM_PACKS"))
 
