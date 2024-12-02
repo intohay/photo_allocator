@@ -1,3 +1,4 @@
+import os
 import json
 import argparse
 
@@ -12,6 +13,9 @@ def main(csv_dir_path: str, m: int, debug_mode: bool):
     # debug_mode: 出力される PDFにデバッグ情報を載せたもの。
 
     inputs = summarize_csv_file(csv_dir_path)
+
+    if not os.path.exists("tmp"):
+        os.makedirs("tmp")
 
     input_file_path = "tmp/input.json"
 
