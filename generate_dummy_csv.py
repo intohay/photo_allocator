@@ -19,10 +19,14 @@ def main():
         if os.path.isfile(file_path):
             os.remove(file_path)
 
-    # 1パック 5枚入り
-    num_photos = 5 * int(os.getenv("NUM_PACKS"))
+    max_num_packs = int(os.getenv("MAX_NUM_PACKS"))
+
+    assert max_num_packs >= 11, "MAX_NUM_PACKS must be at least 11"
 
     for i in range(m):
+        # 各々、11パック以上、max_num_packs 以下のパックを買うこととする
+        num_packs = random.randint(11, max_num_packs)
+        num_photos = 5 * num_packs
         photo_counter = [0] * 52
         for _ in range(num_photos):
             # 大きな乱数を生成し、それを53で割った余りをインデックスとして使用
