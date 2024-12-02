@@ -44,7 +44,7 @@ def main():
         second = [row[2] for row in csv_data]  # 10-13 個目の衣装
 
         base_name = "濱岸ヲタ" + _get_chr_label(i)
-        print("create user:", base_name)
+        print("create user:", base_name, "num packs", num_packs)
         with open(
             f"data_for_test/{base_name}1.csv", "w", newline="", encoding="utf-8"
         ) as file:
