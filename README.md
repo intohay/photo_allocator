@@ -6,8 +6,8 @@
 
 1. リポジトリをクローンする
 ```
-git clone https://github.com/yourusername/PhotoAllocator.git
-cd PhotoAllocator
+git clone https://github.com/intohay/photo_allocator.git
+cd photo_allocator
 ```
 
 2. 必要なパッケージをインストールする(Pythonのバージョンは3.8以上を推奨)
