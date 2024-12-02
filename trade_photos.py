@@ -2,7 +2,6 @@ import pulp
 import numpy as np
 import pandas as pd
 import json
-import sys
 
 
 # AテーブルとBテーブルをデータフレームで表示する関数
@@ -101,7 +100,7 @@ def minimize_max_min_difference(p, fixed_ones, n, m):
     return solution
 
 
-def export_to_json(A, status, names, output_file="output.json"):
+def export_to_json(A, status, names, output_file):
     """
     最終状態を指定されたJSON形式で出力する関数。
     """
@@ -128,21 +127,16 @@ def export_to_json(A, status, names, output_file="output.json"):
 
 
 # 使用例
-if __name__ == "__main__":
+# if __name__ == "__main__":
+def trade_photos(m: int, input_file_path: str, output_file_path: str) -> None:
+    # m: 人数
 
     # random.seed(42)
 
-    # コマンドライン引数としてjsonのパスを受け取る
-    if len(sys.argv) != 2:
-        print("Usage: python photo_trading.py input.json")
-        sys.exit(1)
-
-    input_file_path = sys.argv[1]
     with open(input_file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     # 初期化
-    m = len(data)  # 人数
     n = 52  # カード種類
     # 55以上のランダムな5の倍数をm個生成
     # q = [random.randint(11, 15) * 5 for _ in range(m)]
@@ -238,24 +232,4 @@ if __name__ == "__main__":
         print("最適解が見つかりませんでした。")
 
     names = [person["name"] for person in data]
-    export_to_json(A, status, names, output_file="output.json")
-
-    # 検証
-
-    final_sum = sum(A[i].sum() for i in range(m)) + B.sum()
-
-    print(f"\n最初の全体の枚数：{initial_sum}")
-    print(f"最終の全体の枚数：{final_sum}")
-
-    # 最初の全体の枚数と最後の全体の枚数は等しい
-    assert initial_sum == sum(A[i].sum() for i in range(m)) + B.sum()
-
-    final_sum_per_type = [sum(A[i][j] for i in range(m)) + B[j] for j in range(n)]
-
-    print("\n各カードの枚数：")
-    for j in range(n):
-        print(f"Card_{j}: {initial_sum_per_type[j]} → {final_sum_per_type[j]}")
-
-    # それぞれの種類のカードの総数はそれぞれ最初と最後で等しい
-    for j in range(n):
-        assert initial_sum_per_type[j] == sum(A[i][j] for i in range(m)) + B[j]
+    export_to_json(A, status, names, output_file=output_file_path)
