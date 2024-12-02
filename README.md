@@ -81,7 +81,7 @@ python main.py 15 --test-mode True --debug-mode True
     - default は False
 
 
-## formatter
+## Formatter
 以下のコマンドで Python のコードを整形する。
 ```
 black .
