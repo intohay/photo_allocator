@@ -39,7 +39,7 @@ def main():
         first = [row[1] for row in csv_data]  # 1-9 個目の衣装
         second = [row[2] for row in csv_data]  # 10-13 個目の衣装
 
-        base_name = "濱岸ヲタ" + chr(65 + i)
+        base_name = "濱岸ヲタ" + _get_chr_label(i)
         print("create user:", base_name)
         with open(
             f"data_for_test/{base_name}1.csv", "w", newline="", encoding="utf-8"
@@ -122,6 +122,18 @@ def _generate_csv_data(random_data: list[str]) -> list:
         ["��44", random_data[34], ""],
         ["��45", random_data[35], ""],
     ]
+
+
+def _get_chr_label(index: int):
+    # index 0 → A
+    # index 25 → Z
+    # index 26 → AA
+    # index 27 → AB
+    label = ""
+    while index >= 0:
+        label = chr(index % 26 + 65) + label
+        index = index // 26 - 1
+    return label
 
 
 if __name__ == "__main__":
