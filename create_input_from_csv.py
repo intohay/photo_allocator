@@ -54,7 +54,7 @@ def _retrieve_base_names_from_input_files(filenames: list[str]) -> list[str]:
                 f"input csv names are invalid: {base_name}2.csv is not exist"
             )
 
-    return list(base_names)
+    return base_names
 
 
 def _merge_csv_data(dir_path, base_name: str) -> list[int]:
