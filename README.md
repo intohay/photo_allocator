@@ -57,6 +57,11 @@ pip install -r requirements.txt
 python generate_dummy.py 12
 ```
 
+`generate_dummy_csv.py` を使ってダミーのCSVファイルを生成できる。
+```
+python generate_dummy_csv.py
+```
+
 ## Allocation
 
 以下のコードで最終的な結果が`output.json`として出力される。
@@ -66,11 +71,10 @@ python photo_trading.py <your input json file>
 
 以下のコードで通しの処理が走る。
 ```
-python main.py 15 --test-mode True --debug-mode True
+python main.py --test-mode True --debug-mode True
 ```
 
 引数について
-- 第一引数は、参加者の人数(必須)
 - --test-mode は、マークシートのアプリが出力したCSVファイルの参照先を変更するためのオプション
     - True の場合は data_for_test/ のファイルを参照する
     - False の場合は data/ のファイルを参照する。(本番ではこちらを使う)
