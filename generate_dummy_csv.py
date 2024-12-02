@@ -1,7 +1,6 @@
 import csv
 import os
 import random
-import sys
 from dotenv import load_dotenv
 
 load_dotenv()
