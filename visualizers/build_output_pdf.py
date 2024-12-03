@@ -61,6 +61,9 @@ custom_styles = {
             ),  # データ行のフォント
         ]
     ),
+    "difference": ParagraphStyle(
+        "Difference", fontName="NotoSerifJP-Regular", fontSize=10, leading=12
+    ),
 }
 
 
@@ -74,7 +77,7 @@ description_text = """
 """
 
 
-def create_pdf(filename, output_data):
+def create_pdf(filename, output_data, num_photos_map):
     # PDFのドキュメントを作成
     pdf = SimpleDocTemplate(filename, pagesize=A4)
 
@@ -102,7 +105,14 @@ def create_pdf(filename, output_data):
             style.add("BACKGROUND", (0, row_num), (-1, row_num), bg_color)
         table.setStyle(style)
 
-        # PDFにテーブルを追加
+        before = num_photos_map[personal_data["name"]]
+        after = personal_data["total"]
+        difference_paragraph = Paragraph(
+            f"エントリー枚数: {before}枚, 重複無しで配布する枚数: {after}枚, 山札から引ける枚数: {before - after}枚",
+            custom_styles["difference"],
+        )
+
+        # PDFにテーブルと差の情報を追加
         elements.extend(
             [
                 title,
@@ -110,6 +120,8 @@ def create_pdf(filename, output_data):
                 description,
                 Spacer(1, 24),
                 table,
+                Spacer(1, 12),
+                difference_paragraph,
                 PageBreak(),
             ]
         )

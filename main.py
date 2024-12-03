@@ -22,6 +22,12 @@ def main(csv_dir_path: str, m: int, debug_mode: bool):
 
     input_file_path = "tmp/input.json"
 
+    num_photos_map = {}
+
+    for person in inputs:
+        total_photos = sum(person["photos"].values())
+        num_photos_map[person["name"]] = total_photos
+
     with open(input_file_path, "w", encoding="utf-8") as f:
         json.dump(inputs, f, ensure_ascii=False, indent=4)
 
@@ -37,7 +43,11 @@ def main(csv_dir_path: str, m: int, debug_mode: bool):
         # TODO
         pass
     else:
-        create_pdf(filename="output/photo_info.pdf", output_data=output_data)
+        create_pdf(
+            filename="output/photo_info.pdf",
+            output_data=output_data,
+            num_photos_map=num_photos_map,
+        )
 
 
 if __name__ == "__main__":
